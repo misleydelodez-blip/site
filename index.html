@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nebula — L'IA qui propulse vos idées</title>
+  <meta name="description" content="Nebula transforme vos idées en produits. Plateforme IA premium pour créer, automatiser et déployer plus vite que jamais." />
+
+  <!-- Fonts: Space Grotesk (display) + DM Sans (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"DM Sans"', 'sans-serif'],
+          },
+          colors: {
+            ink: '#08070B',
+            gold: '#E8B339',
+            violet: '#8B5CF6',
+            cyan: '#22D3EE',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    :root { color-scheme: dark; }
+    html, body { background: #08070B; }
+    body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::selection { background: rgba(232,179,57,.3); color: #fff; }
+
+    /* ---------- Animated aurora background ---------- */
+    .aurora {
+      position: fixed; inset: -20%; z-index: 0; filter: blur(90px); opacity: .55; pointer-events: none;
+    }
+    .aurora span {
+      position: absolute; border-radius: 50%; mix-blend-mode: screen;
+      animation: drift 22s ease-in-out infinite;
+    }
+    .aurora .a1 { width: 46vw; height: 46vw; left: -6%; top: -8%; background: #8B5CF6; }
+    .aurora .a2 { width: 40vw; height: 40vw; right: -8%; top: 4%; background: #22D3EE; animation-delay: -6s; }
+    .aurora .a3 { width: 38vw; height: 38vw; left: 30%; bottom: -14%; background: #E8B339; animation-delay: -12s; }
+    @keyframes drift {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(6%, 8%) scale(1.12); }
+      66% { transform: translate(-5%, -6%) scale(.92); }
+    }
+
+    /* ---------- Grain / noise overlay ---------- */
+    .grain {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .04;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* ---------- Gradient animated text ---------- */
+    .text-gradient {
+      background: linear-gradient(110deg, #fff 10%, #E8B339 40%, #8B5CF6 70%, #22D3EE 100%);
+      background-size: 220% auto;
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine { to { background-position: 220% center; } }
+
+    /* ---------- Glass ---------- */
+    .glass { background: rgba(255,255,255,.04); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,.08); }
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal { opacity: 0; transform: translateY(34px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Cursor glow ---------- */
+    .cursor-glow {
+      position: fixed; top: 0; left: 0; width: 460px; height: 460px; border-radius: 50%; z-index: 2; pointer-events: none;
+      background: radial-gradient(circle, rgba(139,92,246,.18), rgba(34,211,238,.06) 40%, transparent 65%);
+      transform: translate(-50%, -50%); transition: opacity .3s; will-change: transform;
+    }
+
+    /* ---------- Marquee ---------- */
+    .marquee { display: flex; gap: 4rem; width: max-content; animation: scroll-x 28s linear infinite; }
+    @keyframes scroll-x { to { transform: translateX(-50%); } }
+
+    /* ---------- Bento tilt ---------- */
+    .bento-card { transition: transform .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s; transform-style: preserve-3d; }
+    .bento-card:hover { border-color: rgba(232,179,57,.4); box-shadow: 0 24px 60px -20px rgba(139,92,246,.45); }
+
+    /* ---------- Magnetic / shimmer btn ---------- */
+    .btn-shine { position: relative; overflow: hidden; }
+    .btn-shine::after {
+      content: ''; position: absolute; inset: 0; transform: translateX(-120%);
+      background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%);
+    }
+    .btn-shine:hover::after { animation: sweep .9s ease; }
+    @keyframes sweep { to { transform: translateX(120%); } }
+
+    .progress-bar { position: fixed; top: 0; left: 0; height: 3px; z-index: 60; width: 0%;
+      background: linear-gradient(90deg, #E8B339, #8B5CF6, #22D3EE); box-shadow: 0 0 12px rgba(139,92,246,.7); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .aurora span, .text-gradient, .marquee, .btn-shine::after { animation: none !important; }
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+      .cursor-glow { display: none; }
+    }
+  </style>
+</head>
+
+<body class="relative text-white/80 antialiased">
+
+  <div class="progress-bar" id="progress"></div>
+  <div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursor" aria-hidden="true"></div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="fixed top-4 left-4 right-4 z-50 flex justify-center">
+    <nav class="glass w-full max-w-6xl rounded-2xl px-5 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <span class="grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-gold via-violet to-cyan">
+          <svg class="w-5 h-5 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.5L21 11l-6.6 2.5L12 20l-2.4-6.5L3 11l6.6-2.5z"/></svg>
+        </span>
+        <span class="font-display font-semibold text-white text-lg tracking-tight">Nebula</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-white/70">
+        <a href="#features" class="hover:text-white transition-colors duration-200">Fonctionnalités</a>
+        <a href="#stats" class="hover:text-white transition-colors duration-200">Performances</a>
+        <a href="#pricing" class="hover:text-white transition-colors duration-200">Tarifs</a>
+      </div>
+      <a href="#pricing" class="btn-shine cursor-pointer rounded-xl bg-white text-ink px-4 py-2 text-sm font-semibold hover:bg-gold transition-colors duration-200">
+        Commencer
+      </a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <main id="top" class="relative z-10">
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-20">
+      <div class="reveal glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-white/70 mb-8">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan"></span>
+        </span>
+        Nouveau — Nebula v3 propulsé par l'IA
+      </div>
+
+      <h1 class="reveal font-display font-bold tracking-tight text-white leading-[0.95] text-5xl sm:text-7xl lg:text-8xl max-w-5xl">
+        Transformez vos idées<br />
+        en <span class="text-gradient">produits vivants</span>
+      </h1>
+
+      <p class="reveal mt-8 max-w-2xl text-lg sm:text-xl text-white/60 leading-relaxed">
+        La plateforme IA premium pour concevoir, automatiser et déployer.
+        Une interface qui pense à votre rythme — fluide, intelligente, magnifique.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row items-center gap-4">
+        <a href="#features" class="btn-shine cursor-pointer rounded-xl bg-gradient-to-r from-gold to-violet px-7 py-3.5 font-semibold text-ink hover:brightness-110 transition-all duration-200">
+          Lancer la démo
+        </a>
+        <a href="#stats" class="cursor-pointer rounded-xl glass px-7 py-3.5 font-semibold text-white hover:bg-white/10 transition-colors duration-200">
+          Voir les performances
+        </a>
+      </div>
+
+      <!-- floating preview -->
+      <div class="reveal mt-20 w-full max-w-4xl" data-parallax="0.06">
+        <div class="glass rounded-3xl p-2 shadow-2xl shadow-violet/20">
+          <div class="rounded-2xl bg-ink/80 border border-white/5 p-6 sm:p-10">
+            <div class="flex gap-1.5 mb-6">
+              <span class="w-3 h-3 rounded-full bg-white/15"></span>
+              <span class="w-3 h-3 rounded-full bg-white/15"></span>
+              <span class="w-3 h-3 rounded-full bg-white/15"></span>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+              <div class="col-span-2 h-28 rounded-xl bg-gradient-to-br from-violet/30 to-transparent border border-white/5"></div>
+              <div class="h-28 rounded-xl bg-gradient-to-br from-cyan/30 to-transparent border border-white/5"></div>
+              <div class="h-20 rounded-xl bg-gradient-to-br from-gold/30 to-transparent border border-white/5"></div>
+              <div class="col-span-2 h-20 rounded-xl bg-white/5 border border-white/5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOGOS MARQUEE ============ -->
+    <section class="py-12 overflow-hidden">
+      <p class="text-center text-xs uppercase tracking-[0.25em] text-white/40 mb-8">Adopté par des équipes ambitieuses</p>
+      <div class="relative">
+        <div class="marquee text-white/35 font-display text-2xl font-semibold">
+          <span>Orbit</span><span>Lumen</span><span>Vertex</span><span>Pulse</span><span>Atlas</span><span>Quanta</span>
+          <span>Orbit</span><span>Lumen</span><span>Vertex</span><span>Pulse</span><span>Atlas</span><span>Quanta</span>
+        </div>
+        <div class="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-ink to-transparent"></div>
+        <div class="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-ink to-transparent"></div>
+      </div>
+    </section>
+
+    <!-- ============ BENTO FEATURES ============ -->
+    <section id="features" class="px-6 py-28 max-w-6xl mx-auto">
+      <div class="reveal text-center mb-16">
+        <span class="text-gold font-display font-medium tracking-wide">FONCTIONNALITÉS</span>
+        <h2 class="font-display font-bold text-4xl sm:text-5xl text-white mt-3">Tout ce qu'il faut, rien de superflu</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- big card -->
+        <div class="bento-card reveal glass md:col-span-2 md:row-span-2 rounded-3xl p-8 cursor-pointer">
+          <div class="grid place-items-center w-12 h-12 rounded-2xl bg-violet/20 text-violet mb-6">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-2xl text-white mb-3">Moteur IA temps réel</h3>
+          <p class="text-white/60 leading-relaxed max-w-md">Génère, prédit et adapte vos interfaces à la volée. Latence inférieure à 50ms, pensé pour passer à l'échelle dès la première ligne.</p>
+          <div class="mt-8 grid grid-cols-2 gap-3">
+            <div class="rounded-xl bg-white/5 border border-white/5 h-24"></div>
+            <div class="rounded-xl bg-gradient-to-br from-violet/25 to-cyan/10 border border-white/5 h-24"></div>
+          </div>
+        </div>
+
+        <div class="bento-card reveal glass rounded-3xl p-7 cursor-pointer">
+          <div class="grid place-items-center w-12 h-12 rounded-2xl bg-cyan/20 text-cyan mb-5">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl text-white mb-2">Déploiement éclair</h3>
+          <p class="text-white/55 text-sm leading-relaxed">Un push, et c'est en ligne. Edge global, zéro config.</p>
+        </div>
+
+        <div class="bento-card reveal glass rounded-3xl p-7 cursor-pointer">
+          <div class="grid place-items-center w-12 h-12 rounded-2xl bg-gold/20 text-gold mb-5">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="font-display font-semibold text-xl text-white mb-2">Sécurité native</h3>
+          <p class="text-white/55 text-sm leading-relaxed">Chiffrement de bout en bout, conformité SOC2.</p>
+        </div>
+
+        <div class="bento-card reveal glass md:col-span-3 rounded-3xl p-8 cursor-pointer flex flex-col md:flex-row md:items-center gap-6 justify-between">
+          <div>
+            <h3 class="font-display font-semibold text-2xl text-white mb-2">Automatisations sans code</h3>
+            <p class="text-white/60 max-w-lg">Reliez vos outils, déclenchez des workflows et laissez Nebula orchestrer le reste pendant que vous dormez.</p>
+          </div>
+          <div class="flex gap-3">
+            <div class="w-14 h-14 rounded-2xl bg-violet/20 border border-white/5"></div>
+            <div class="w-14 h-14 rounded-2xl bg-cyan/20 border border-white/5"></div>
+            <div class="w-14 h-14 rounded-2xl bg-gold/20 border border-white/5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section id="stats" class="px-6 py-28 max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="reveal glass rounded-3xl p-8 text-center">
+          <div class="font-display font-bold text-5xl text-gradient" data-count="99" data-suffix="%">0</div>
+          <p class="text-white/55 text-sm mt-2">Uptime garanti</p>
+        </div>
+        <div class="reveal glass rounded-3xl p-8 text-center">
+          <div class="font-display font-bold text-5xl text-gradient" data-count="50" data-suffix="ms">0</div>
+          <p class="text-white/55 text-sm mt-2">Latence moyenne</p>
+        </div>
+        <div class="reveal glass rounded-3xl p-8 text-center">
+          <div class="font-display font-bold text-5xl text-gradient" data-count="120" data-suffix="k+">0</div>
+          <p class="text-white/55 text-sm mt-2">Développeurs</p>
+        </div>
+        <div class="reveal glass rounded-3xl p-8 text-center">
+          <div class="font-display font-bold text-5xl text-gradient" data-count="14" data-suffix="x">0</div>
+          <p class="text-white/55 text-sm mt-2">Plus rapide</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING / CTA ============ -->
+    <section id="pricing" class="px-6 py-28 max-w-4xl mx-auto text-center">
+      <div class="reveal glass rounded-[2rem] p-10 sm:p-16 relative overflow-hidden">
+        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-violet/30 blur-3xl"></div>
+        <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-cyan/20 blur-3xl"></div>
+        <div class="relative">
+          <h2 class="font-display font-bold text-4xl sm:text-6xl text-white leading-tight">Prêt à construire<br/>l'<span class="text-gradient">impossible</span> ?</h2>
+          <p class="text-white/60 mt-6 max-w-xl mx-auto text-lg">Commencez gratuitement. Aucune carte requise. Passez à l'échelle quand vous le décidez.</p>
+          <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#top" class="btn-shine cursor-pointer rounded-xl bg-white text-ink px-8 py-4 font-semibold hover:bg-gold transition-colors duration-200">Démarrer gratuitement</a>
+            <a href="#top" class="cursor-pointer rounded-xl glass px-8 py-4 font-semibold text-white hover:bg-white/10 transition-colors duration-200">Parler à un expert</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="px-6 py-14 max-w-6xl mx-auto border-t border-white/5">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-2.5">
+          <span class="grid place-items-center w-8 h-8 rounded-lg bg-gradient-to-br from-gold via-violet to-cyan">
+            <svg class="w-4 h-4 text-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 6.5L21 11l-6.6 2.5L12 20l-2.4-6.5L3 11l6.6-2.5z"/></svg>
+          </span>
+          <span class="font-display font-semibold text-white">Nebula</span>
+        </div>
+        <p class="text-white/40 text-sm">© 2026 Nebula. Conçu avec soin.</p>
+        <div class="flex gap-5 text-white/50">
+          <a href="#top" class="hover:text-white transition-colors duration-200" aria-label="Twitter"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 1.2h3.7l-8 9.1L24 22.8h-7.4l-5.8-7.5-6.6 7.5H.4l8.5-9.7L0 1.2h7.6l5.2 6.9zM17.6 20.6h2L6.5 3.3H4.3z"/></svg></a>
+          <a href="#top" class="hover:text-white transition-colors duration-200" aria-label="GitHub"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ---- Scroll reveal ----
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i % 6 * 60) + 'ms';
+      io.observe(el);
+    });
+
+    // ---- Scroll progress bar ----
+    const bar = document.getElementById('progress');
+    const onScroll = () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      bar.style.width = pct + '%';
+      // parallax
+      document.querySelectorAll('[data-parallax]').forEach(el => {
+        const s = parseFloat(el.dataset.parallax);
+        el.style.transform = `translateY(${h.scrollTop * s * -1}px)`;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ---- Animated counters ----
+    const counters = document.querySelectorAll('[data-count]');
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target; const target = +el.dataset.count; const suffix = el.dataset.suffix || '';
+        if (reduce) { el.textContent = target + suffix; cio.unobserve(el); return; }
+        let cur = 0; const step = Math.max(1, target / 60);
+        const tick = () => { cur += step; if (cur >= target) { el.textContent = target + suffix; }
+          else { el.textContent = Math.floor(cur) + suffix; requestAnimationFrame(tick); } };
+        tick(); cio.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(c => cio.observe(c));
+
+    // ---- Cursor glow + bento tilt ----
+    if (!reduce && window.matchMedia('(pointer: fine)').matches) {
+      const cursor = document.getElementById('cursor');
+      let cx = window.innerWidth/2, cy = window.innerHeight/2, tx = cx, ty = cy;
+      window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+      const loop = () => { cx += (tx-cx)*0.12; cy += (ty-cy)*0.12;
+        cursor.style.transform = `translate(${cx}px, ${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); };
+      loop();
+
+      // 3D tilt on bento cards
+      document.querySelectorAll('.bento-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width - 0.5;
+          const py = (e.clientY - r.top) / r.height - 0.5;
+          card.style.transform = `perspective(900px) rotateY(${px*6}deg) rotateX(${-py*6}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+      });
+    }
+  </script>
+</body>
+</html>
