@@ -9,8 +9,16 @@
   padding: 2rem;
 }
 
+.hero-badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.2;
   margin: 0;
 }
 

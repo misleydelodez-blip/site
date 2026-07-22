@@ -1,6 +1,8 @@
 import { useRef, useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import SplitText from './components/SplitText/SplitText'
+import ShinyText from './components/ShinyText/ShinyText'
 import './App.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -17,10 +19,7 @@ function App() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap
-        .timeline()
-        .from('.hero-title', { y: 40, opacity: 0, duration: 0.8, ease: 'power3.out' })
-        .from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.4')
+      gsap.from('.hero-subtitle', { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out', delay: 0.3 })
 
       cardsRef.current.forEach((card) => {
         gsap.from(card, {
@@ -42,8 +41,9 @@ function App() {
   return (
     <div ref={heroRef}>
       <section className="hero">
-        <h1 className="hero-title">GSAP + React</h1>
-        <p className="hero-subtitle">A minimal demo showing timelines and ScrollTrigger.</p>
+        <ShinyText text="react-bits" className="hero-badge" speed={3} />
+        <SplitText text="GSAP + react-bits" tag="h1" className="hero-title" splitType="chars" />
+        <p className="hero-subtitle">A minimal demo combining GSAP timelines, ScrollTrigger, and react-bits components.</p>
       </section>
 
       <section className="cards">
