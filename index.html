@@ -1,0 +1,138 @@
+<title>EXE GYM HYROX</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{
+  --bg:#0D0C0B;--panel:#1B1712;--ink:#F3EEE4;--brass:#C6923F;--ember:#B5432E;
+  --ff-display:'Anton',Arial,sans-serif;--ff-body:'Libre Franklin',sans-serif;
+  --ff-mono:'Space Mono',monospace;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ff-body);font-size:16px;line-height:1.6;}
+h1,h2,h3{font-family:var(--ff-display);text-transform:uppercase;font-weight:400;margin:0;}
+.wrap{width:min(1180px,92vw);margin:0 auto;}
+
+.chrome{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(13,12,11,0.95);border-bottom:1px solid rgba(243,238,228,0.14);font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#A89C8A;}
+.lang-toggle{display:flex;gap:10px;cursor:pointer;}
+.lang-btn{background:none;border:1px solid rgba(243,238,228,0.2);color:#A89C8A;padding:6px 12px;font-family:var(--ff-mono);font-size:0.65rem;cursor:pointer;transition:all 180ms;}
+.lang-btn.active{background:var(--brass);color:var(--bg);border-color:var(--brass);}
+
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid rgba(243,238,228,0.14);margin-top:60px;}
+.logo{height:50px;object-fit:contain;}
+.nav-links{display:flex;gap:30px;font-family:var(--ff-mono);font-size:0.75rem;letter-spacing:0.1em;}
+.nav-links a{color:inherit;text-decoration:none;transition:color 200ms;}
+.nav-links a:hover{color:var(--brass);}
+
+section{padding:80px 0;border-bottom:1px solid rgba(243,238,228,0.14);}
+.section-head{margin-bottom:50px;}
+h2{font-size:clamp(2rem,5vw,3.5rem);line-height:0.95;margin-bottom:20px;}
+.section-head p{max-width:60ch;color:#A89C8A;font-size:1.02rem;}
+
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(243,238,228,0.14);margin:40px 0;}
+.gallery img{width:100%;height:300px;object-fit:cover;background:var(--panel);}
+
+.btn{font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;background:var(--brass);color:var(--bg);border:1px solid var(--brass);cursor:pointer;transition:all 200ms;}
+.btn:hover{background:transparent;color:var(--brass);}
+
+footer{padding:40px 0;text-align:center;font-family:var(--ff-mono);font-size:0.7rem;color:#6E6455;}
+
+[lang]{display:none;}
+[lang].active{display:block;}
+</style>
+
+<div class="chrome">
+  <span>EXE GYM HYROX</span>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('jp')">JP</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav>
+    <img src="data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='50' height='50' fill='%231B1712'/%3E%3Ctext x='25' y='30' font-size='20' fill='%23C6923F' text-anchor='middle' font-weight='bold' font-family='Arial'%3Eexe%3C/text%3E%3C/svg%3E" alt="EXE GYM" class="logo">
+    <div class="nav-links">
+      <a href="#hyrox"><span lang="fr" class="active">Espace Hyrox</span><span lang="en">Hyrox Area</span><span lang="jp">ハイロックスエリア</span></a>
+      <a href="#training"><span lang="fr" class="active">Espace Training</span><span lang="en">Training Area</span><span lang="jp">トレーニングエリア</span></a>
+      <a href="#services"><span lang="fr" class="active">Services</span><span lang="en">Services</span><span lang="jp">サービス</span></a>
+    </div>
+  </nav>
+
+  <section>
+    <h1 style="font-size:clamp(3rem,9vw,5rem);margin-bottom:30px;">
+      <span lang="fr" class="active">La Performance,<br>sans Compromis.</span>
+      <span lang="en">Performance,<br>No Compromise.</span>
+      <span lang="jp">パフォーマンス、<br>妥協なし。</span>
+    </h1>
+    <p style="max-width:50ch;color:#A89C8A;font-size:1.1rem;">
+      <span lang="fr" class="active">Préparation Hyrox et coaching haute performance à Paris. 8 stations, 1km de course entre chaque, résultats mesurés.</span>
+      <span lang="en">Hyrox training and high-performance coaching in Paris. 8 stations, 1km runs between each, measurable results.</span>
+      <span lang="jp">パリでのハイロックストレーニングとハイパフォーマンスコーチング。8つのステーション、各間に1kmの走行、測定可能な結果。</span>
+    </p>
+    <button class="btn" style="margin-top:30px;">
+      <span lang="fr" class="active">Réserver un essai</span>
+      <span lang="en">Book Trial</span>
+      <span lang="jp">トライアルを予約</span>
+    </button>
+  </section>
+
+  <section id="hyrox">
+    <div class="section-head">
+      <h2>
+        <span lang="fr" class="active">Espace Hyrox</span>
+        <span lang="en">Hyrox Area</span>
+        <span lang="jp">ハイロックスエリア</span>
+      </h2>
+      <p>
+        <span lang="fr" class="active">Cours, tarifs, coachs et programme dédiés à la course Hyrox.</span>
+        <span lang="en">Classes, pricing, coaches and Hyrox-dedicated programs.</span>
+        <span lang="jp">クラス、料金、コーチ、ハイロックス専用プログラム。</span>
+      </p>
+    </div>
+    <div class="gallery">
+      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%231B1712'/%3E%3Ctext x='200' y='150' font-size='18' fill='%23C6923F' text-anchor='middle' font-family='monospace'%3EHyrox Photo 1%3C/text%3E%3C/svg%3E" alt="Hyrox Training">
+      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%231B1712'/%3E%3Ctext x='200' y='150' font-size='18' fill='%23C6923F' text-anchor='middle' font-family='monospace'%3EHyrox Photo 2%3C/text%3E%3C/svg%3E" alt="Hyrox Competition">
+    </div>
+  </section>
+
+  <section id="training">
+    <div class="section-head">
+      <h2>
+        <span lang="fr" class="active">Espace Training</span>
+        <span lang="en">Training Area</span>
+        <span lang="jp">トレーニングエリア</span>
+      </h2>
+      <p>
+        <span lang="fr" class="active">Coaching personnel, plans sur mesure et suivi par nos coachs.</span>
+        <span lang="en">Personal coaching, custom plans and tracking by our coaches.</span>
+        <span lang="jp">パーソナルコーチング、カスタムプラン、コーチによるトラッキング。</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-head">
+      <h2>
+        <span lang="fr" class="active">Services</span>
+        <span lang="en">Services</span>
+        <span lang="jp">サービス</span>
+      </h2>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>© EXE GYM HYROX 2025</p>
+</footer>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('[lang]').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll(`[lang="${lang}"]`).forEach(el=>el.classList.add('active'));
+  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick*="${lang}"]`)?.classList.add('active');
+  localStorage.lang=lang;
+}
+if(localStorage.lang)setLang(localStorage.lang);
+</script>
