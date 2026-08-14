@@ -1,43 +1,89 @@
-<title>EXE GYM HYROX</title>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EXE GYM HYROX — Préparation Hyrox & Training Paris</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Club de préparation Hyrox et training haute performance à Paris. 8 stations, coaching exigeant, résultats mesurés.">
 <style>
 :root{
-  --bg:#0D0C0B;--panel:#1B1712;--ink:#F3EEE4;--brass:#C6923F;--ember:#B5432E;
-  --ff-display:'Anton',Arial,sans-serif;--ff-body:'Libre Franklin',sans-serif;
-  --ff-mono:'Space Mono',monospace;
+  --bg:#0D0C0B;--panel:#1B1712;--ink:#F3EEE4;--ink-dim:#A89C8A;--ink-faint:#6E6455;
+  --brass:#C6923F;--brass-dim:#8A6A34;--ember:#B5432E;
+  --line:rgba(243,238,228,0.14);--line-strong:rgba(243,238,228,0.28);
+  --ff-display:'Anton',Arial,sans-serif;--ff-body:'Libre Franklin',sans-serif;--ff-mono:'Space Mono',monospace;
 }
 *{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ff-body);font-size:16px;line-height:1.6;}
-h1,h2,h3{font-family:var(--ff-display);text-transform:uppercase;font-weight:400;margin:0;}
+h1,h2,h3,h4{font-family:var(--ff-display);text-transform:uppercase;font-weight:400;margin:0;}
+a{color:inherit;text-decoration:none;}
 .wrap{width:min(1180px,92vw);margin:0 auto;}
+img{display:block;max-width:100%;}
 
-.chrome{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:rgba(13,12,11,0.95);border-bottom:1px solid rgba(243,238,228,0.14);font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#A89C8A;}
-.lang-toggle{display:flex;gap:10px;cursor:pointer;}
-.lang-btn{background:none;border:1px solid rgba(243,238,228,0.2);color:#A89C8A;padding:6px 12px;font-family:var(--ff-mono);font-size:0.65rem;cursor:pointer;transition:all 180ms;}
+.chrome{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(16px,3vw,40px);background:rgba(13,12,11,0.96);border-bottom:var(--line);font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-dim);}
+.lang-toggle{display:flex;gap:8px;}
+.lang-btn{background:0;border:1px solid var(--line-strong);color:var(--ink-dim);padding:6px 12px;font-family:var(--ff-mono);font-size:0.62rem;cursor:pointer;transition:all 180ms;letter-spacing:0.08em;}
 .lang-btn.active{background:var(--brass);color:var(--bg);border-color:var(--brass);}
 
-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid rgba(243,238,228,0.14);margin-top:60px;}
-.logo{height:50px;object-fit:contain;}
-.nav-links{display:flex;gap:30px;font-family:var(--ff-mono);font-size:0.75rem;letter-spacing:0.1em;}
-.nav-links a{color:inherit;text-decoration:none;transition:color 200ms;}
+nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0;border-bottom:var(--line);margin-top:60px;flex-wrap:wrap;gap:20px;}
+.logo{height:45px;width:auto;}
+.nav-links{display:flex;gap:clamp(16px,3vw,32px);font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;flex-wrap:wrap;}
+.nav-links a{color:var(--ink-dim);transition:color 180ms;}
 .nav-links a:hover{color:var(--brass);}
 
-section{padding:80px 0;border-bottom:1px solid rgba(243,238,228,0.14);}
-.section-head{margin-bottom:50px;}
-h2{font-size:clamp(2rem,5vw,3.5rem);line-height:0.95;margin-bottom:20px;}
-.section-head p{max-width:60ch;color:#A89C8A;font-size:1.02rem;}
+.hero{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:100px 0 80px;border-bottom:var(--line);}
+h1{font-size:clamp(2.8rem,8vw,5.2rem);line-height:0.92;margin-bottom:24px;}
+.hero p{max-width:56ch;color:var(--ink-dim);font-size:1.05rem;margin:0 0 32px;}
 
-.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(243,238,228,0.14);margin:40px 0;}
-.gallery img{width:100%;height:300px;object-fit:cover;background:var(--panel);}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line);margin:48px 0;}
+.gallery figure{margin:0;overflow:hidden;}
+.gallery img{width:100%;height:280px;object-fit:cover;background:var(--panel);transition:transform 300ms ease;}
+.gallery img:hover{transform:scale(1.02);}
 
-.btn{font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;padding:12px 24px;background:var(--brass);color:var(--bg);border:1px solid var(--brass);cursor:pointer;transition:all 200ms;}
+section{padding:clamp(60px,10vw,100px) 0;border-bottom:var(--line);}
+section:last-of-type{border-bottom:0;}
+.section-head{margin-bottom:clamp(40px,6vw,64px);}
+h2{font-size:clamp(1.8rem,5vw,3.2rem);line-height:0.93;margin-bottom:16px;}
+.section-head p{max-width:60ch;color:var(--ink-dim);font-size:1rem;}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);margin-top:40px;}
+.card{background:var(--panel);padding:32px;display:flex;flex-direction:column;gap:12px;}
+.card h3{font-size:1.4rem;line-height:1;}
+.card p{color:var(--ink-dim);font-size:0.95rem;margin:0;}
+
+.btn{font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;background:var(--brass);color:var(--bg);border:1px solid var(--brass);cursor:pointer;transition:all 200ms;display:inline-block;}
 .btn:hover{background:transparent;color:var(--brass);}
+.btn.ghost{background:0;color:var(--ink);border-color:var(--line-strong);}
+.btn.ghost:hover{border-color:var(--brass);color:var(--brass);}
 
-footer{padding:40px 0;text-align:center;font-family:var(--ff-mono);font-size:0.7rem;color:#6E6455;}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);margin:40px 0;text-align:center;}
+.stat{background:var(--panel);padding:32px 16px;}
+.stat .num{font-family:var(--ff-display);font-size:2.2rem;color:var(--brass);}
+.stat .label{font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.08em;color:var(--ink-dim);text-transform:uppercase;margin-top:8px;}
+
+.tabs{display:flex;border-bottom:var(--line);margin-bottom:40px;}
+.tab{flex:1;padding:16px;font-family:var(--ff-mono);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-dim);background:0;border:0;border-bottom:2px solid transparent;cursor:pointer;transition:all 180ms;}
+.tab:hover{color:var(--ink);}
+.tab.active{border-color:var(--brass);color:var(--brass);background:var(--panel);}
+.tab-content{display:none;}
+.tab-content.active{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+
+form{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:600px;}
+form input,form textarea{background:var(--panel);border:1px solid var(--line-strong);color:var(--ink);font-family:var(--ff-body);padding:12px 16px;font-size:0.95rem;}
+form textarea{grid-column:1/-1;min-height:120px;resize:none;}
+form button{grid-column:1/-1;justify-self:start;}
+
+footer{padding:40px 0 60px;border-top:var(--line);}
+.foot-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;font-family:var(--ff-mono);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint);}
 
 [lang]{display:none;}
 [lang].active{display:block;}
+
+@media(max-width:768px){
+  .nav-links{gap:12px;}
+  .gallery{grid-template-columns:1fr;}
+  .gallery img{height:240px;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .tab-content.active{grid-template-columns:1fr;}
+  form{grid-template-columns:1fr;}
+}
 </style>
 
 <div class="chrome">
@@ -51,88 +97,83 @@ footer{padding:40px 0;text-align:center;font-family:var(--ff-mono);font-size:0.7
 
 <div class="wrap">
   <nav>
-    <img src="data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='50' height='50' fill='%231B1712'/%3E%3Ctext x='25' y='30' font-size='20' fill='%23C6923F' text-anchor='middle' font-weight='bold' font-family='Arial'%3Eexe%3C/text%3E%3C/svg%3E" alt="EXE GYM" class="logo">
+    <img src="images/logo.png" alt="EXE GYM HYROX" class="logo" onerror="this.style.display='none'">
     <div class="nav-links">
-      <a href="#hyrox"><span lang="fr" class="active">Espace Hyrox</span><span lang="en">Hyrox Area</span><span lang="jp">ハイロックスエリア</span></a>
-      <a href="#training"><span lang="fr" class="active">Espace Training</span><span lang="en">Training Area</span><span lang="jp">トレーニングエリア</span></a>
+      <a href="#hyrox"><span lang="fr" class="active">Espace Hyrox</span><span lang="en">Hyrox</span><span lang="jp">ハイロックス</span></a>
+      <a href="#training"><span lang="fr" class="active">Espace Training</span><span lang="en">Training</span><span lang="jp">トレーニング</span></a>
       <a href="#services"><span lang="fr" class="active">Services</span><span lang="en">Services</span><span lang="jp">サービス</span></a>
+      <a href="#contact"><span lang="fr" class="active">Nous Contacter</span><span lang="en">Contact</span><span lang="jp">お問い合わせ</span></a>
     </div>
+    <button class="btn" style="margin-left:auto;"><span lang="fr" class="active">Essai offert</span><span lang="en">Free Trial</span><span lang="jp">無料体験</span></button>
   </nav>
 
-  <section>
-    <h1 style="font-size:clamp(3rem,9vw,5rem);margin-bottom:30px;">
-      <span lang="fr" class="active">La Performance,<br>sans Compromis.</span>
-      <span lang="en">Performance,<br>No Compromise.</span>
-      <span lang="jp">パフォーマンス、<br>妥協なし。</span>
-    </h1>
-    <p style="max-width:50ch;color:#A89C8A;font-size:1.1rem;">
-      <span lang="fr" class="active">Préparation Hyrox et coaching haute performance à Paris. 8 stations, 1km de course entre chaque, résultats mesurés.</span>
-      <span lang="en">Hyrox training and high-performance coaching in Paris. 8 stations, 1km runs between each, measurable results.</span>
-      <span lang="jp">パリでのハイロックストレーニングとハイパフォーマンスコーチング。8つのステーション、各間に1kmの走行、測定可能な結果。</span>
-    </p>
-    <button class="btn" style="margin-top:30px;">
-      <span lang="fr" class="active">Réserver un essai</span>
-      <span lang="en">Book Trial</span>
-      <span lang="jp">トライアルを予約</span>
-    </button>
+  <section class="hero">
+    <h1><span lang="fr" class="active">La Performance,<br>sans Compromis.</span><span lang="en">Performance,<br>No Compromise.</span><span lang="jp">パフォーマンス、<br>妥協なし。</span></h1>
+    <p><span lang="fr" class="active">Club de préparation Hyrox et coaching haute performance à Paris. Entraînement exigeant, méthode mesurée, résultats suivis race après race.</span><span lang="en">Hyrox training and high-performance coaching in Paris. Demanding workout, measured method, results tracked race after race.</span><span lang="jp">パリでのハイロックストレーニングとハイパフォーマンスコーチング。厳しいトレーニング、測定されたメソッド、レースごとに結果を追跡。</span></p>
+    <div style="display:flex;gap:12px;margin-top:32px;">
+      <button class="btn"><span lang="fr" class="active">Réserver un essai</span><span lang="en">Book Trial</span><span lang="jp">予約する</span></button>
+      <button class="btn ghost"><span lang="fr" class="active">Découvrir</span><span lang="en">Learn More</span><span lang="jp">詳細を見る</span></button>
+    </div>
+    <div class="stats" style="margin-top:80px;">
+      <div class="stat"><div class="num">8</div><div class="label"><span lang="fr" class="active">Stations</span><span lang="en">Stations</span><span lang="jp">ステーション</span></div></div>
+      <div class="stat"><div class="num">340+</div><div class="label"><span lang="fr" class="active">Athlètes</span><span lang="en">Athletes</span><span lang="jp">アスリート</span></div></div>
+      <div class="stat"><div class="num">8</div><div class="label"><span lang="fr" class="active">Coachs</span><span lang="en">Coaches</span><span lang="jp">コーチ</span></div></div>
+      <div class="stat"><div class="num">97%</div><div class="label"><span lang="fr" class="active">Rétention</span><span lang="en">Retention</span><span lang="jp">継続率</span></div></div>
+    </div>
   </section>
 
   <section id="hyrox">
     <div class="section-head">
-      <h2>
-        <span lang="fr" class="active">Espace Hyrox</span>
-        <span lang="en">Hyrox Area</span>
-        <span lang="jp">ハイロックスエリア</span>
-      </h2>
-      <p>
-        <span lang="fr" class="active">Cours, tarifs, coachs et programme dédiés à la course Hyrox.</span>
-        <span lang="en">Classes, pricing, coaches and Hyrox-dedicated programs.</span>
-        <span lang="jp">クラス、料金、コーチ、ハイロックス専用プログラム。</span>
-      </p>
+      <h2><span lang="fr" class="active">Espace Hyrox</span><span lang="en">Hyrox Area</span><span lang="jp">ハイロックスエリア</span></h2>
+      <p><span lang="fr" class="active">Cours collectifs, tarifs transparents, coachs certifiés et programme périodisé aligné sur votre calendrier de course.</span><span lang="en">Group classes, transparent pricing, certified coaches and periodized programs aligned with your race calendar.</span><span lang="jp">グループクラス、透明な料金、認定コーチ、レースカレンダーに合わせたプログラム。</span></p>
     </div>
     <div class="gallery">
-      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%231B1712'/%3E%3Ctext x='200' y='150' font-size='18' fill='%23C6923F' text-anchor='middle' font-family='monospace'%3EHyrox Photo 1%3C/text%3E%3C/svg%3E" alt="Hyrox Training">
-      <img src="data:image/svg+xml,%3Csvg width='400' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='300' fill='%231B1712'/%3E%3Ctext x='200' y='150' font-size='18' fill='%23C6923F' text-anchor='middle' font-family='monospace'%3EHyrox Photo 2%3C/text%3E%3C/svg%3E" alt="Hyrox Competition">
+      <figure><img src="images/hyrox-1.jpg" alt="Hyrox Training" loading="lazy"></figure>
+      <figure><img src="images/hyrox-2.jpg" alt="Hyrox Athlete" loading="lazy"></figure>
+      <figure><img src="images/hyrox-3.jpg" alt="Hyrox Equipment" loading="lazy"></figure>
+      <figure><img src="images/hyrox-4.jpg" alt="Hyrox Facility" loading="lazy"></figure>
+    </div>
+    <div class="cards">
+      <div class="card"><h3><span lang="fr" class="active">Cours</span><span lang="en">Classes</span><span lang="jp">クラス</span></h3><p><span lang="fr" class="active">Entraînements collectifs 2x/semaine minimum, progressif et supervisé.</span><span lang="en">Group training 2x/week minimum, progressive and supervised.</span><span lang="jp">グループトレーニング週2回以上、段階的で監督下。</span></p></div>
+      <div class="card"><h3><span lang="fr" class="active">Tarifs</span><span lang="en">Pricing</span><span lang="jp">料金</span></h3><p><span lang="fr" class="active">De l'initiation (99€) au programme élite (399€) — adaptés à votre niveau.</span><span lang="en">From beginner (€99) to elite program (€399) — fit your level.</span><span lang="jp">初級（€99）からエリートプログラム（€399）まで — あなたのレベルに合わせて。</span></p></div>
+      <div class="card"><h3><span lang="fr" class="active">Coachs</span><span lang="en">Coaches</span><span lang="jp">コーチ</span></h3><p><span lang="fr" class="active">Équipe de 8 coachs certifiés Hyrox avec expérience en compétition.</span><span lang="en">Team of 8 Hyrox-certified coaches with competition experience.</span><span lang="jp">8人のハイロックス認定コーチチーム、競技経験豊富。</span></p></div>
+      <div class="card"><h3><span lang="fr" class="active">Programme</span><span lang="en">Program</span><span lang="jp">プログラム</span></h3><p><span lang="fr" class="active">Cycles de 12 semaines alignés sur 8 stations Hyrox réelles.</span><span lang="en">12-week cycles aligned with 8 real Hyrox stations.</span><span lang="jp">8つのハイロックスステーションに合わせた12週間のサイクル。</span></p></div>
     </div>
   </section>
 
   <section id="training">
-    <div class="section-head">
-      <h2>
-        <span lang="fr" class="active">Espace Training</span>
-        <span lang="en">Training Area</span>
-        <span lang="jp">トレーニングエリア</span>
-      </h2>
-      <p>
-        <span lang="fr" class="active">Coaching personnel, plans sur mesure et suivi par nos coachs.</span>
-        <span lang="en">Personal coaching, custom plans and tracking by our coaches.</span>
-        <span lang="jp">パーソナルコーチング、カスタムプラン、コーチによるトラッキング。</span>
-      </p>
+    <div class="section-head"><h2><span lang="fr" class="active">Espace Training</span><span lang="en">Training Area</span><span lang="jp">トレーニングエリア</span></h2><p><span lang="fr" class="active">Au-delà de Hyrox : coaching personnel, plans d'entraînement sur mesure et suivi continu par nos coachs.</span><span lang="en">Beyond Hyrox: personal coaching, custom training plans and continuous tracking by our coaches.</span><span lang="jp">ハイロックスを超えて：パーソナルコーチング、カスタムプラン、継続的な追跡。</span></p></div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab(this,'perso')"><span lang="fr" class="active">1:1</span><span lang="en">1:1</span><span lang="jp">1:1</span></button>
+      <button class="tab" onclick="switchTab(this,'plans')"><span lang="fr" class="active">Plans</span><span lang="en">Plans</span><span lang="jp">プラン</span></button>
+      <button class="tab" onclick="switchTab(this,'coachs')"><span lang="fr" class="active">Coachs</span><span lang="en">Coaches</span><span lang="jp">コーチ</span></button>
     </div>
+    <div class="tab-content active" data-tab="perso"><div><h3><span lang="fr" class="active">Coaching Personnel</span><span lang="en">Personal Coaching</span><span lang="jp">パーソナルコーチング</span></h3><p><span lang="fr" class="active">Un coach dédiée pour vous, 50 min par session. Posture, technique, force, endurance — tout est optimisé pour votre réussite.</span><span lang="en">Dedicated coach for you, 50 min per session. Posture, technique, strength, endurance — everything optimized for your success.</span><span lang="jp">専任コーチ、50分/セッション。姿勢、技術、筋力、耐久力 — すべてが成功のために最適化されています。</span></p></div><div><p style="color:#A89C8A;"><span lang="fr" class="active"><b>Format</b> — 50 minutes<br><b>Réservation</b> — En ligne, sous 48h<br><b>Suivi</b> — Bilan mensuel<br><b>Tarif</b> — À partir de 70€/séance</span><span lang="en"><b>Format</b> — 50 minutes<br><b>Booking</b> — Online, within 48h<br><b>Review</b> — Monthly check-in<br><b>Price</b> — From €70/session</span><span lang="jp"><b>フォーマット</b> — 50分<br><b>予約</b> — オンライン、48時間以内<br><b>レビュー</b> — 月次チェックイン<br><b>価格</b> — €70/セッションから</span></p></div></div>
+    <div class="tab-content" data-tab="plans"><div><h3><span lang="fr" class="active">Plans Personnalisés</span><span lang="en">Custom Plans</span><span lang="jp">カスタムプラン</span></h3><p><span lang="fr" class="active">Programme écrit semaine par semaine, ajusté selon votre progression et votre calendrier. Accès app dédiée pour suivi en temps réel.</span><span lang="en">Program written week by week, adjusted for your progress and calendar. Dedicated app access for real-time tracking.</span><span lang="jp">週単位で記述されたプログラム、進度とカレンダーに合わせて調整。リアルタイム追跡用アプリへのアクセス。</span></p></div><div><p style="color:#A89C8A;"><span lang="fr" class="active"><b>Durée</b> — 12 semaines min<br><b>Ajustement</b> — Hebdomadaire<br><b>Accès</b> — App mobile<br><b>Tarif</b> — À partir de 199€/cycle</span><span lang="en"><b>Duration</b> — 12 weeks min<br><b>Adjustment</b> — Weekly<br><b>Access</b> — Mobile app<br><b>Price</b> — From €199/cycle</span><span lang="jp"><b>期間</b> — 最低12週間<br><b>調整</b> — 週次<br><b>アクセス</b> — モバイルアプリ<br><b>価格</b> — €199/サイクルから</span></p></div></div>
+    <div class="tab-content" data-tab="coachs"><div><h3><span lang="fr" class="active">Notre Équipe</span><span lang="en">Our Team</span><span lang="jp">チーム</span></h3><p><span lang="fr" class="active">8 coachs certifiés, tous avec expérience en compétition Hyrox ou endurance. Chacun apporte sa spécialité : force, mobilité, stratégie course.</span><span lang="en">8 certified coaches, all with Hyrox competition or endurance experience. Each brings their specialty: strength, mobility, race strategy.</span><span lang="jp">8人の認定コーチ、全員がハイロックス競技または耐久性経験がある。各自が専門性をもたらします：筋力、可動性、レース戦略。</span></p></div><div><p style="color:#A89C8A;"><span lang="fr" class="active"><b>Réservation</b> — Sélectionnez votre coach<br><b>Spécialités</b> — Consultez profils<br><b>Disponibilité</b> — Créneaux flexibles<br><span lang="en"><b>Booking</b> — Select your coach<br><b>Specialties</b> — View profiles<br><b>Availability</b> — Flexible slots<br><span lang="jp"><b>予約</b> — コーチを選択<br><b>専門</b> — プロフィールを表示<br><b>可用性</b> — 柔軟なスロット</span></p></div></div>
   </section>
 
   <section id="services">
-    <div class="section-head">
-      <h2>
-        <span lang="fr" class="active">Services</span>
-        <span lang="en">Services</span>
-        <span lang="jp">サービス</span>
-      </h2>
+    <div class="section-head"><h2><span lang="fr" class="active">Services</span><span lang="en">Services</span><span lang="jp">サービス</span></h2><p><span lang="fr" class="active">Ce que nous proposons au-delà du coaching : équipement, analyses, communauté.</span><span lang="en">What we offer beyond coaching: equipment, analysis, community.</span><span lang="jp">コーチング以上のもの：機器、分析、コミュニティ。</span></p></div>
+    <div class="cards">
+      <div class="card"><h3><span lang="fr" class="active">Accès Illimité</span><span lang="en">Unlimited Access</span><span lang="jp">無制限アクセス</span></h3><p><span lang="fr" class="active">Libre accès aux 8 stations Hyrox 24h/24 pour les membres Premium.</span><span lang="en">24/7 access to 8 Hyrox stations for Premium members.</span><span lang="jp">プレミアムメンバーが24時間8つのステーションにアクセス。</span></p></div>
+      <div class="card"><h3><span lang="fr" class="active">Analyses Video</span><span lang="en">Video Analysis</span><span lang="jp">ビデオ分析</span></h3><p><span lang="fr" class="active">Chaque mois, analyse vidéo de votre technique sur la station prioritaire.</span><span lang="en">Monthly video analysis of your technique on priority station.</span><span lang="jp">毎月、優先ステーションでの技術のビデオ分析。</span></p></div>
+      <div class="card"><h3><span lang="fr" class="active">Compétitions</span><span lang="en">Competitions</span><span lang="jp">競技</span></h3><p><span lang="fr" class="active">Accès prioritaire aux épreuves internes et sorties Hyrox locales.</span><span lang="en">Priority access to internal competitions and local Hyrox events.</span><span lang="jp">内部競技とローカルハイロックスイベントへの優先アクセス。</span></p></div>
+      <div class="card"><h3><span lang="fr" class="active">Communauté</span><span lang="en">Community</span><span lang="jp">コミュニティ</span></h3><p><span lang="fr" class="active">Groupe privé Discord avec challenges mensuels et partage de tips.</span><span lang="en">Private Discord group with monthly challenges and tips sharing.</span><span lang="jp">月次チャレンジとヒント共有を含むプライベートDiscordグループ。</span></p></div>
     </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-head"><h2><span lang="fr" class="active">Nous Contacter</span><span lang="en">Get In Touch</span><span lang="jp">お問い合わせ</span></h2><p><span lang="fr" class="active">Des questions ? Nous sommes là pour discuter de vos objectifs.</span><span lang="en">Questions? We're here to discuss your goals.</span><span lang="jp">質問があります？あなたの目標について相談するためにここにいます。</span></p></div>
+    <form><input type="text" placeholder="Nom / Name / 名前" required><input type="email" placeholder="Email" required><input type="tel" placeholder="Téléphone / Phone / 電話"><input type="text" placeholder="Sujet / Subject / 件名" required><textarea placeholder="Message..." required></textarea><button class="btn"><span lang="fr" class="active">Envoyer</span><span lang="en">Send</span><span lang="jp">送信</span></button></form>
+    <div style="margin-top:60px;padding-top:40px;border-top:var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:left;"><div><h4><span lang="fr" class="active">Adresse</span><span lang="en">Address</span><span lang="jp">住所</span></h4><p style="color:var(--ink-dim);margin:12px 0 0;"><span lang="fr" class="active">Paris<br>France</span></p></div><div><h4><span lang="fr" class="active">Téléphone</span><span lang="en">Phone</span><span lang="jp">電話</span></h4><p style="color:var(--ink-dim);margin:12px 0 0;">+33 1 XX XX XX XX</p></div><div><h4><span lang="fr" class="active">Email</span><span lang="en">Email</span><span lang="jp">メール</span></h4><p style="color:var(--ink-dim);margin:12px 0 0;">contact@exegym.fr</p></div></div>
   </section>
 </div>
 
-<footer>
-  <p>© EXE GYM HYROX 2025</p>
-</footer>
+<footer><div class="wrap"><div class="foot-row"><span>© 2025 EXE GYM HYROX</span><span><span lang="fr" class="active">Tous droits réservés</span><span lang="en">All rights reserved</span><span lang="jp">著作権所有</span></span></div></div></footer>
 
 <script>
-function setLang(lang){
-  document.querySelectorAll('[lang]').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll(`[lang="${lang}"]`).forEach(el=>el.classList.add('active'));
-  document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick*="${lang}"]`)?.classList.add('active');
-  localStorage.lang=lang;
-}
+function setLang(lang){document.querySelectorAll('[lang]').forEach(e=>e.classList.remove('active'));document.querySelectorAll(`[lang="${lang}"]`).forEach(e=>e.classList.add('active'));document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick*="${lang}"]`)?.classList.add('active');localStorage.lang=lang;}
+function switchTab(btn,tab){btn.parentElement.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');btn.closest('section').querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));btn.closest('section').querySelector(`[data-tab="${tab}"]`).classList.add('active');}
 if(localStorage.lang)setLang(localStorage.lang);
 </script>
